@@ -2,24 +2,26 @@ def StringChallenge(strParam):
   import string
   # convert input to string
   strParam = str(strParam)
-  # code goes here
-  # count length of string
+
+  # find the length of a string
   stringLength = len(strParam)
 
-  # checkign if string is shorter than 7 characters
+  failing_conditions = []
+
+  # checking if string is shorter than 7 characters
   if stringLength < 7:
-    # print("Password must be longer than 7 characters and shorter than 31 characters. It is currently ", stringLength, " characters.")
-    return ("false")
+    failing_conditions.append(f"Password must be longer than 7 characters and shorter than 31 characters. It is currently {stringLength} characters long.")
+    # return ("false")
 
   # checking if string is longer than 31 characters
   if stringLength > 31:
-    # print("Password must be longer than 7 characters and shorter than 31 characters. It is currently ", stringLength, " characters.")
-    return ("false")
+    failing_conditions.append(f"Password must shorter than 31 characters. It is currently {stringLength} characters long.")
+    # return ("false")
 
   # checking if "password" is in the provided password
   if "password" in strParam:
-    # print("Password cannot contain 'password' in it.")
-    return ("false")
+    failing_conditions.append("Password cannot contain 'password' in it.")
+    #return ("false")
   
   # convert string to set to check for individual character criteria
   stringSet = set(strParam)
@@ -43,22 +45,42 @@ def StringChallenge(strParam):
       mathematicalSymbolFlag = True
     
   if capitalLetterFlag == False:
-    # print("Password requires at least one capital letter.")
-    return ("false")
+    failing_conditions.append("Password requires at least one capital letter.")
+    # return ("false")
 
   if numberFlag == False:
-    # print("Password requires at least one number value.")
-    return ("false")
+    failing_conditions.append("Password requires at least one number value.")
+    # return ("false")
 
   if punctuationFlag == False:
-    # print("Password requires at least one punctuation value.")
-    return ("false")
+    failing_conditions.append("Password requires at least one punctuation value.")
+    # return ("false")
 
   if mathematicalSymbolFlag == False:
-    # print("Password requires at least one mathematical symbol.")
+    failing_conditions.append("Password requires at least one mathematical symbol.")
+    # return ("false")
+
+  if failing_conditions:
+    print(f"The password {strParam} fails under these conditions: {failing_conditions}")
     return ("false")
+  else:
+    print(f"The password {strParam} passes under all conditions.")
+    return "true"
 
-  return "true"
+# uncomment below line if you want to enter your own password
+# print(StringChallenge(input()))
 
-# keep this function call here 
-print(StringChallenge(input()))
+# test cases code
+
+password_test_cases = [
+  'password',
+  'pwCheckpass',
+  'pwCheckpassword',
+  'pwcheckpassword',
+  'PWCpass1',
+  'PWCpassW2+',
+  'PWCpassW2-'
+]
+
+for test_case in password_test_cases:
+  print(StringChallenge(test_case))
