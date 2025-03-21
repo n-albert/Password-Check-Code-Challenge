@@ -74,12 +74,12 @@ def StringChallenge(strParam):
 
 password_test_cases = [
   'password',
-  'pwCheckpass',
-  'pwCheckpassword',
-  'pwcheckpassword',
-  'PWCpass1',
-  'PWCpassW2+',
-  'PWCpassW2-'
+  'Appolonius_Jt0',
+  'Januz_password',
+  'Ordinateur0r',
+  'G50mb-ntpass',
+  'QuantPassW2+',
+  'Kenelm-passW2-'
 ]
 
 for test_case in password_test_cases:
